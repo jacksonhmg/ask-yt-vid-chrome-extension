@@ -27,6 +27,26 @@ const saveKey = () => {
     }
   };
 
+const getKey = () => {
+  return new Promise((resolve, reject) => {
+    chrome.storage.local.get(['openai-key'], (result) => {
+      if (result['openai-key']) {
+        const decodedKey = atob(result['openai-key']);
+        resolve(decodedKey);
+      }
+    });
+  });
+};
+
+
+const submitQuestion = () => {
+    const question = document.getElementById('question_input').value;
+
+
+}
+
+
+
 const changeKey = () => {
 document.getElementById('key_needed').style.display = 'block';
 document.getElementById('key_entered').style.display = 'none';
@@ -36,6 +56,8 @@ document.getElementById('save_key_button').addEventListener('click', saveKey);
 document
 .getElementById('change_key_button')
 .addEventListener('click', changeKey);
+
+document.getElementById('submit-question').addEventListener('click', submitQuestion);
 
 checkForKey().then((response) => {
     if (response) {
