@@ -39,12 +39,34 @@ const getKey = () => {
 };
 
 
-const submitQuestion = () => {
-    const question = document.getElementById('question_input').value;
+const submitQuestion = async () => {
+  const question = document.getElementById('question_input').value;
+  const key = await getKey();
 
-
+  try {
+      let activeTab = await getActiveTabUrl();
+      console.log(question);
+      console.log(key);
+      console.log(activeTab);
+  } catch (error) {
+      console.error('Error getting active tab URL:', error);
+  }
 }
 
+const getActiveTabUrl = () => {
+  return new Promise((resolve, reject) => {
+      chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+          if (chrome.runtime.lastError) {
+              return reject(new Error(chrome.runtime.lastError));
+          }
+          resolve(tabs[0].url);
+      });
+  });
+}
+
+const test = () => {
+  console.log("test");
+}
 
 
 const changeKey = () => {

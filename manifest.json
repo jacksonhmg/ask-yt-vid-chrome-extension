@@ -13,5 +13,5 @@
     "default_popup": "index.html",
     "default_title": "Ask YT vid"
   },
-  "permissions": ["contextMenus", "tabs", "storage"]
+  "permissions": ["contextMenus", "tabs", "storage", "activeTab"]
 }
