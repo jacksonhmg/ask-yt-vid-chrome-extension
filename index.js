@@ -64,10 +64,6 @@ const getActiveTabUrl = () => {
   });
 }
 
-const test = () => {
-  console.log("test");
-}
-
 
 const changeKey = () => {
 document.getElementById('key_needed').style.display = 'block';
